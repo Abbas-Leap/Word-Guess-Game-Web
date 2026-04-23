@@ -1,0 +1,96 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="N1jg08QgdsriYA8riTTk">
+    <mxGraphModel dx="860" dy="1668" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-2" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="Connected Players" vertex="1">
+          <mxGeometry height="120" width="80" x="80" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" value="Remove Player" vertex="1">
+          <mxGeometry height="80" width="80" x="200" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="Add Player" vertex="1">
+          <mxGeometry height="80" width="80" x="200" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-7" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=82.5;entryPerimeter=0;" target="WlO19_xd6Zo4qGaxw8B2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-8" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=37.5;entryPerimeter=0;" target="WlO19_xd6Zo4qGaxw8B2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-11" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-23" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User connects to &#39;/&#39;" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-15" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Gives an id or overwrites if one already exists&lt;div&gt;eg #1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Add player is called with id being arguement" vertex="1">
+          <mxGeometry height="60" width="120" x="240" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-18" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User closes the tab" vertex="1">
+          <mxGeometry height="60" width="120" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-20" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Gets the id" vertex="1">
+          <mxGeometry height="60" width="120" x="400" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Remove player is called with id being arguement" vertex="1">
+          <mxGeometry height="60" width="120" x="560" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-26" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-30" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User always goes to &#39;/login&#39; and enters a user name and password" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="-80" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-32" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="If the username already exists in database the server checks password" vertex="1">
+          <mxGeometry height="60" width="120" x="40" y="-200" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-33" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="WlO19_xd6Zo4qGaxw8B2-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="If username doesnot exist it creates a new account and sends a confirm message" vertex="1">
+          <mxGeometry height="60" width="120" x="200" y="-200" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-40" edge="1" parent="1" source="WlO19_xd6Zo4qGaxw8B2-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WlO19_xd6Zo4qGaxw8B2-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="-340" />
+              <mxPoint x="40" y="-340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User goes to &#39;/lobby&#39;" vertex="1">
+          <mxGeometry height="60" width="120" x="120" y="-320" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Note:&lt;div&gt;For now the game is global, private rooms come after finishing the base&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="280" x="260" y="-305" as="geometry" />
+        </mxCell>
+        <mxCell id="WlO19_xd6Zo4qGaxw8B2-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="If game hasn`t started can press ready if it has he just waits with a waiting... screen" vertex="1">
+          <mxGeometry height="40" width="220" x="40" y="-400" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

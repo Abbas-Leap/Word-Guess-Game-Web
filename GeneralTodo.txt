@@ -1,0 +1,8 @@
+-DataBase
+-Login
+-Lobby
+-Game (Start the flow and end)
+-Chat (during game and lobby)
+-Leaderboard (after everything is done)
+
+Note: the specifics are in the system folders this todo is about the main components and systems needed

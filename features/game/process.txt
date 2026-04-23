@@ -1,0 +1,12 @@
+Add active clients
+
+Remove active clients
+
+Make the game start:
+    -pick a setter
+    -calculate number of guesses
+
+Make the game end:
+    -Give points to winner
+    -Save it to dataBase
+    -Reset everything (runtime)
