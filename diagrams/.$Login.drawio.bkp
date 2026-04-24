@@ -96,9 +96,6 @@
         <mxCell id="WlO19_xd6Zo4qGaxw8B2-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="If game hasn`t started can press ready if it has he just waits with a waiting... screen" vertex="1">
           <mxGeometry height="40" width="220" x="40" y="-400" as="geometry" />
         </mxCell>
-        <mxCell id="DSRryw69ppspndt-mjqk-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Note: along side the id the username is saved to stop 2 players on one user at a time" vertex="1">
-          <mxGeometry height="30" width="280" x="400" y="-120" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
