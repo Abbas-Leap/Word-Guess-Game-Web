@@ -6,11 +6,14 @@ from features.game import api as gameAPI
 
 app = Flask(__name__)
 
-print(gameAPI.addPlayerId(1))
-print(gameAPI.addPlayerId(2))
-print(gameAPI.addPlayerId(3))
-print(gameAPI.getPlayers())
-print(gameAPI.selectAWordSetter())
+print(gameAPI.setWordAndSetupGame("Pops"))
+print(gameAPI.makeAGuess("Pops"))
+print(gameAPI.makeAGuess("poos"))
+print(gameAPI.makeAGuess("lols"))
+
+print(gameAPI.makeAGuess("poos"))
+print(gameAPI.makeAGuess("oooo"))
+print(gameAPI.makeAGuess("lols"))
 
 
 @app.route("/")
