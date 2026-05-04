@@ -1,0 +1,3 @@
+
+account format: {"username": ["password", "points"]}
+note: make sure that all usernames are only letters and numbers and _

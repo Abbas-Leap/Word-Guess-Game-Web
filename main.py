@@ -1,26 +1,28 @@
-from flask import Flask
-from flask.helpers import url_for
+from flask import Flask, render_template
+from flask.globals import request
+from flask.helpers import make_response, url_for
 from werkzeug.utils import redirect
 
+from dataBase import api as dataBaseAPI
 from features.game import api as gameAPI
 
 app = Flask(__name__)
 
-print(gameAPI.setWordAndSetupGame("Pops"))
-print(gameAPI.makeAGuess("Pops"))
-print(gameAPI.makeAGuess("poos"))
-print(gameAPI.makeAGuess("lols"))
-
-print(gameAPI.makeAGuess("poos"))
-print(gameAPI.makeAGuess("oooo"))
-print(gameAPI.makeAGuess("lols"))
-
 
 @app.route("/")
 def index():
-    return redirect(url_for("login"))
+    resp = make_response(redirect(url_for("login")))
+
+    for i, v in request.cookies.items():
+        resp.delete_cookie(key=i)
+    return resp
 
 
 @app.route("/login")
 def login():
+    return render_template("login.html")
+
+
+@app.route("/loginComms", methods=["POST", "GET"])
+def loginComms():
     return ""

@@ -1,35 +1,39 @@
 import random
 
-playerIds = []
+playerUsernames = []
 
-runtTimeData = {"nextId": 0, "guessesRemaining": 0}
+guesserReward = 5
+setterReward = 10
+
+runtTimeData = {"guessesRemaining": 0, "wordSetterUsername": ""}
 
 wordInfo = {"word": "", "size": 0}
 
 
-def getAPlayerIdAndAddPlayer():
+def addPlayerusername(username):
+    if username in playerUsernames:
+        return {"status": "declined", "msg": "user already used"}
 
-    playerIds.append(runtTimeData["nextId"])
-    runtTimeData["nextId"] += 1
+    playerUsernames.append(username)
 
-    return {"status": "ok", "nextId": runtTimeData["nextId"]}
+    return {"status": "ok"}
 
 
-def removePlayerId(id):
-    if id not in playerIds:
+def removePlayerusername(username):
+    if username not in playerUsernames:
         return {"status": "declined", "msg": "not found"}
 
-    playerIds.remove(id)
+    playerUsernames.remove(username)
 
     return {"status": "ok"}
 
 
 def resetPlayers():
-    playerIds.clear()
+    playerUsernames.clear()
 
 
 def getPlayers():
-    return playerIds
+    return playerUsernames
 
 
 def resetGameState():
@@ -39,7 +43,7 @@ def resetGameState():
     wordInfo["size"] = 0
 
     runtTimeData["guessesRemaining"] = 0
-    runtTimeData["nextId"] = 0
+    runtTimeData["wordSetterUsername"] = ""
 
 
 def getRemainingGuesses():
@@ -49,7 +53,11 @@ def getRemainingGuesses():
 def selectAWordSetter():
     players = getPlayers()
 
-    return players[random.randint(0, len(players) - 1)]
+    setter = players[random.randint(0, len(players) - 1)]
+
+    runtTimeData["wordSetterUsername"] = setter
+
+    return setter
 
 
 def setWordAndSetupGame(word: str):
@@ -81,15 +89,15 @@ def makeAGuess(g: str) -> dict:
     runtTimeData["guessesRemaining"] -= 1
 
     for i in range(wordInfo["size"]):
-        if (
-            guess[i] == wordInfo["word"][i]
-            and wordInfo["word"].count(guess[i]) > lettersInfoRunTime[guess[i]]
-        ):
-            letterFeedBack.append("g")
-            lettersInfoRunTime[guess[i]] += 1
-            continue
-
         try:
+            if (
+                guess[i] == wordInfo["word"][i]
+                and wordInfo["word"].count(guess[i]) > lettersInfoRunTime[guess[i]]
+            ):
+                letterFeedBack.append("g")
+                lettersInfoRunTime[guess[i]] += 1
+                continue
+
             if (
                 guess[i] in wordInfo["word"]
                 and wordInfo["word"].count(guess[i]) > lettersInfoRunTime[guess[i]]
@@ -103,3 +111,10 @@ def makeAGuess(g: str) -> dict:
         letterFeedBack.append("r")
 
     return {"status": "ok", "letterFeedBack": letterFeedBack}
+
+
+def isGuessCorrect(letterFeedBack):
+    if letterFeedBack.count("g") == len(letterFeedBack):
+        return True
+
+    return False

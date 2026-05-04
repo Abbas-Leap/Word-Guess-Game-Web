@@ -1,8 +1,0 @@
-Make the game start:
-
-    -calculate number of guesses
-
-Make the game end:
-    -Give points to winner
-    -Save it to dataBase
-    -Reset everything (runtime)

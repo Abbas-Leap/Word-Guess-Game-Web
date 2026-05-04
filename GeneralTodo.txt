@@ -1,6 +1,7 @@
--DataBase
+-DataBase / Done
 -Login
 -Lobby
+-Game Logic / Done
 -Game (Start the flow and end)
 -Chat (during game and lobby)
 -Leaderboard (after everything is done)
