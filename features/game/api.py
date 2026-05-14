@@ -1,5 +1,7 @@
 import random
 
+from dataBase import api as dataBaseAPI
+
 playerUsernames = []
 
 guesserReward = 5
@@ -61,6 +63,9 @@ def selectAWordSetter():
 
 
 def setWordAndSetupGame(word: str):
+    if len(word) > 10:
+        return {"status": "declined", "msg": "word too long"}
+
     wordInfo["word"] = word.lower()
     wordInfo["size"] = len(word)
 
@@ -118,3 +123,22 @@ def isGuessCorrect(letterFeedBack):
         return True
 
     return False
+
+
+def endGame(setterWon):
+    if setterWon:
+        dataBaseAPI.addPointsToAccount(runtTimeData["wordSetterUsername"], setterReward)
+        resetGameState()
+        return {"status": "ok"}
+
+    for i in playerUsernames:
+        if i == runtTimeData["wordSetterUsername"]:
+            continue
+
+        res = dataBaseAPI.addPointsToAccount(i, guesserReward)
+
+        if res["status"] == "declined":
+            print("declined")
+
+    resetGameState()
+    return {"status": "ok"}

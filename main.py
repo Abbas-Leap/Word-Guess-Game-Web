@@ -5,6 +5,7 @@ from werkzeug.utils import redirect
 
 from dataBase import api as dataBaseAPI
 from features.game import api as gameAPI
+from logs import api as lg
 
 app = Flask(__name__)
 

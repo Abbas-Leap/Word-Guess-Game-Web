@@ -1,0 +1,111 @@
+import json
+from pathlib import Path
+from time import sleep
+
+dBFolder = Path(__file__).resolve().parent
+dBJson = Path(dBFolder / "data.json")
+
+data = {"other": {"nextId": 0}, "accounts": {}}
+
+data = json.loads(dBJson.read_text())
+
+sleep(0.1)
+
+usernameChars = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "_",
+]
+
+
+def saveData():
+    dBJson.write_text(json.dumps(data))
+
+    return {"status": "ok"}
+
+
+def isUsernameTaken(username):
+    if username in data["accounts"].keys():
+        return True
+
+    return False
+
+
+def verifyInput(username, password):
+    if len(username) > 15 or len(username) < 3:
+        return {
+            "status": "declined",
+            "msg": "Username too long or too short make it between 3 and 15 characters",
+        }
+
+    for i in username.lower():
+        if i not in usernameChars:
+            return {
+                "status": "declined",
+                "msg": "Invalid Characters use only letters numbers and _",
+            }
+
+    try:
+        if data["accounts"][username][0] == password:
+            return {"status": "ok", "msg": "Login Successful"}
+    except KeyError:
+        pass
+    return {"status": "declined", "msg": "Login Failed, incorrect password"}
+
+
+def createAccount(username, password):
+    # Check if account exists (to avoid account reseting / stealing usernames)
+    if username in data["accounts"].keys():
+        return {"status": "declined", "msg": "Account already exists"}
+    # Create account in format Username: [password, points]
+    data["accounts"][username] = [password, 0]
+    #
+    saveData()
+    #
+    return {"status": "ok"}
+
+
+def addPointsToAccount(username, points):
+    # Check if account exists
+    if username not in data["accounts"].keys():
+        return {"status": "declined", "msg": f'Username "{username}" not found'}
+    #
+    data["accounts"][username][1] += points
+    #
+    saveData()
+    #
+    return {"status": "ok"}
