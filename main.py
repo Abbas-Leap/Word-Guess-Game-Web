@@ -35,7 +35,7 @@ def loginComms():
 
     if isLoginDataValid["status"] == "declined":
         return jsonify(isLoginDataValid)
-    #
+    # If username not found
     if loginAPI.findUsername(username=loginData["username"])["status"] == "failed":
         dataBaseAPI.createAccount(
             username=loginData["username"], password=loginData["password"]
@@ -47,5 +47,15 @@ def loginComms():
                 "msg": "Created a new account please reenter all your login data to login",
             }
         )
+    # If username found
+    isLoginDataCorrect = loginAPI.verifyLoginDataCorrect(
+        username=loginData["username"], password=loginData["password"]
+    )
 
-    return jsonify({"msg": "Hello"})
+    if isLoginDataCorrect["status"] == "mismatch":
+        return jsonify({"status": "declined", "msg": isLoginDataCorrect["msg"]})
+    # If everything matches all inputs valid username found password matches
+    finalResp = make_response(jsonify({"status": "ok", "msg": "Succesfully logged in"}))
+    finalResp.set_cookie("username", loginData["username"])
+
+    return finalResp

@@ -12,15 +12,15 @@ Server side (Python):
     If username is not in database:
         Create a new account with username as username and password as password / Done
 
-        Refresh the login page and tell user to login with the info he just submitted (Javascript)
+        Refresh the login page and tell user to login with the info he just submitted (Javascript) / Done
 
     If username is in database:
         Check for password match
 
         if password matches:
-            Add a cookie for user with username as value and key username
+            Add a cookie for user with username as value and key username / Done
 
-            Redirect user to home page (Javascript)
+            Redirect user to home page (Javascript) / Done
 
         if password doesnot match:
-            Send a failed message to user (Javascript)
+            Send a failed message to user (Javascript) / Done

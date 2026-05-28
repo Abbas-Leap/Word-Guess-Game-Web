@@ -26,3 +26,12 @@ def findUsername(username):
     result = dataBaseAPI.fetchAllAccountData(username=username)
 
     return {"status": result["status"]}
+
+
+def verifyLoginDataCorrect(username, password):
+    accountData = dataBaseAPI.fetchAllAccountData(username=username)
+
+    if accountData["data"][1] == password:
+        return {"status": "ok"}
+
+    return {"status": "mismatch", "msg": "Wrong password"}

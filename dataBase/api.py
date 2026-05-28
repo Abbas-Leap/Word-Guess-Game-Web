@@ -76,29 +76,33 @@ def validateUsername(username):
 
 
 def createAccount(username, password):
+    localConnection = sqlite3.connect(dbFile)
+    localCursor = localConnection.cursor()
     # Check if account exists (to avoid account reseting / stealing usernames)
-    cursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
+    localCursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
 
-    if cursor.fetchone():
+    if localCursor.fetchone():
         lg.logInfo(f"Declined account {username} already exists")
 
         return {"status": "declined", "msg": "Account already exists"}
     # Create account in format Username: [password, points]
     lg.logInfo(f"Creating account {username}")
 
-    cursor.execute(f"""INSERT INTO accounts(username, password, points)
+    localCursor.execute(f"""INSERT INTO accounts(username, password, points)
         VALUES ('{username}', '{password}', 0)
         """)
 
-    connection.commit()
+    localConnection.commit()
     #
     return {"status": "ok"}
 
 
 def fetchAllAccountData(username):
-    cursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
+    localConnection = sqlite3.connect(dbFile)
+    localCursor = localConnection.cursor()
+    localCursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
 
-    data = cursor.fetchone()
+    data = localCursor.fetchone()
 
     if not data:
         lg.logInfo(f"Failed to fetch info of account {username} it was not found")
@@ -108,23 +112,25 @@ def fetchAllAccountData(username):
 
 
 def addPointsToAccount(username, points):
+    localConnection = sqlite3.connect(dbFile)
+    localCursor = localConnection.cursor()
     # Get points
-    cursor.execute(f"""
+    localCursor.execute(f"""
         SELECT points
         FROM accounts
         WHERE username = '{username}'
         """)
 
-    currentPoints = cursor.fetchone()[0]
+    currentPoints = localCursor.fetchone()[0]
     #
     goalPoints = points + currentPoints
 
-    cursor.execute(f"""
+    localCursor.execute(f"""
         UPDATE accounts
         SET points = {goalPoints}
         WHERE username = '{username}'
         """)
 
-    connection.commit()
+    localConnection.commit()
 
     return {"status": "ok"}

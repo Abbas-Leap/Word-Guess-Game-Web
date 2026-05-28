@@ -37,4 +37,8 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         window.location.reload();
         return;
     }
+
+    if (responseData["status"] == "ok") {
+        alert(responseData["msg"])
+    }
 });
