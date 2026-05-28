@@ -1,10 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 from flask.globals import request
 from flask.helpers import make_response, url_for
 from werkzeug.utils import redirect
 
 from dataBase import api as dataBaseAPI
 from features.game import api as gameAPI
+from features.login import api as loginAPI
 from logs import api as lg
 
 app = Flask(__name__)
@@ -26,4 +27,25 @@ def login():
 
 @app.route("/loginComms", methods=["POST", "GET"])
 def loginComms():
-    return ""
+    loginData = request.get_json()
+    #
+    isLoginDataValid = loginAPI.validateInput(
+        username=loginData["username"], password=loginData["password"]
+    )
+
+    if isLoginDataValid["status"] == "declined":
+        return jsonify(isLoginDataValid)
+    #
+    if loginAPI.findUsername(username=loginData["username"])["status"] == "failed":
+        dataBaseAPI.createAccount(
+            username=loginData["username"], password=loginData["password"]
+        )
+
+        return jsonify(
+            {
+                "status": "createdAccount",
+                "msg": "Created a new account please reenter all your login data to login",
+            }
+        )
+
+    return jsonify({"msg": "Hello"})

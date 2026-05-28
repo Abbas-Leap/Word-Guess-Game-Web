@@ -1,0 +1,26 @@
+User types username and password and submits / Done
+
+Client side (Javascript):
+    Check if username is between 3 and 15 characters / Done
+    Check if password above 3 characters
+
+    Send or Reject according to result / Done
+
+Server side (Python):
+    Check for username like Javascript checks with check for invalid characters / Done
+
+    If username is not in database:
+        Create a new account with username as username and password as password / Done
+
+        Refresh the login page and tell user to login with the info he just submitted (Javascript)
+
+    If username is in database:
+        Check for password match
+
+        if password matches:
+            Add a cookie for user with username as value and key username
+
+            Redirect user to home page (Javascript)
+
+        if password doesnot match:
+            Send a failed message to user (Javascript)

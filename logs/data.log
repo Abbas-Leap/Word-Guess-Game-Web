@@ -1,133 +1,108 @@
-INFO: Hello (2026-05-14 14:25:22,887)
+ERROR: Exception on /loginComms [POST] (2026-05-28 15:59:02,903)
+Traceback (most recent call last):
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/main.py", line 32, in loginComms
+    isLoginDataValid = loginAPI.validateInput(
+        username=loginData["username"], password=loginData["password"]
+    )
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/features/login/api.py", line 10, in validateInput
+    if password < 3:
+       ^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'int'
+INFO: 127.0.0.1 - - [28/May/2026 15:59:02] "[35m[1mPOST /loginComms HTTP/1.1[0m" 500 - (2026-05-28 15:59:02,905)
+ERROR: Exception on /loginComms [POST] (2026-05-28 15:59:03,694)
+Traceback (most recent call last):
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/main.py", line 32, in loginComms
+    isLoginDataValid = loginAPI.validateInput(
+        username=loginData["username"], password=loginData["password"]
+    )
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/features/login/api.py", line 10, in validateInput
+    if password < 3:
+       ^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'int'
+INFO: 127.0.0.1 - - [28/May/2026 15:59:03] "[35m[1mPOST /loginComms HTTP/1.1[0m" 500 - (2026-05-28 15:59:03,700)
 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:25:22,896)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:25:22,896)
-INFO: Hello (2026-05-14 14:27:45,595)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:27:45,606)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:27:45,606)
-INFO: Hello (2026-05-14 14:27:57,072)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:27:57,081)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:27:57,082)
-INFO: Hello (2026-05-14 14:28:54,946)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:28:54,958)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:28:54,958)
-INFO: Hello (2026-05-14 14:29:00,312)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:29:00,324)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:29:00,324)
-INFO: Creating Tables (2026-05-14 14:32:37,524)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:32:37,533)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:32:37,533)
-INFO: Creating Tables (2026-05-14 14:32:55,800)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:32:55,812)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:32:55,812)
-INFO: Creating Tables (2026-05-14 14:35:00,808)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:35:00,827)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:35:00,827)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:35:03,164)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:35:03,164)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:37:24,455)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:37:24,455)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:37:41,898)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:37:41,898)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:37:43,809)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:37:43,809)
-INFO: Declined account Bob already exists (2026-05-14 14:56:56,495)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:56:56,503)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:56:56,503)
-INFO: Declined account Bob already exists (2026-05-14 14:57:06,141)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:57:06,150)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:57:06,150)
-INFO: Declined account Bob already exists (2026-05-14 14:57:16,712)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:57:16,724)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:57:16,724)
-INFO: Creating account Bob (2026-05-14 14:57:46,662)
-INFO: Declined account Bob already exists (2026-05-14 14:57:46,662)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:57:46,670)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:57:46,670)
-INFO: Creating account Bob (2026-05-14 14:58:14,937)
-INFO: Declined account Bob already exists (2026-05-14 14:58:14,943)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:58:14,951)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:58:14,951)
-INFO: Declined account Bob already exists (2026-05-14 14:58:19,292)
-INFO: Declined account Bob already exists (2026-05-14 14:58:19,292)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 14:58:19,301)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 14:58:19,301)
-INFO: Declined account Bob already exists (2026-05-14 15:06:08,354)
-INFO: Declined account Bob already exists (2026-05-14 15:06:08,354)
-INFO: Declined account Bob already exists (2026-05-14 15:06:17,703)
-INFO: Declined account Bob already exists (2026-05-14 15:06:17,704)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:06:17,714)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:06:17,714)
-INFO: Declined account Bob already exists (2026-05-14 15:06:57,714)
-INFO: Declined account Bob already exists (2026-05-14 15:06:57,714)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:06:57,721)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:06:57,721)
-INFO: Declined account Bob already exists (2026-05-14 15:07:18,740)
-INFO: Declined account Bob already exists (2026-05-14 15:07:18,740)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:07:18,749)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:07:18,749)
-INFO: Declined account Bob already exists (2026-05-14 15:08:04,592)
-INFO: Declined account Bob already exists (2026-05-14 15:08:04,592)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:08:04,592)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:08:04,600)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:08:04,601)
-INFO: Declined account Bob already exists (2026-05-14 15:10:40,319)
-INFO: Declined account Bob already exists (2026-05-14 15:10:40,319)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:10:40,319)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:10:40,325)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:10:40,325)
-INFO: Declined account Bob already exists (2026-05-14 15:10:50,689)
-INFO: Declined account Bob already exists (2026-05-14 15:10:50,690)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:10:50,690)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:10:50,696)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:10:50,696)
-INFO: Declined account Bob already exists (2026-05-14 15:15:13,554)
-INFO: Declined account Bob already exists (2026-05-14 15:15:13,554)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:15:13,554)
-INFO: Declined account Bob already exists (2026-05-14 15:15:29,899)
-INFO: Declined account Bob already exists (2026-05-14 15:15:29,899)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:15:29,899)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:15:29,912)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:15:29,912)
-INFO: Declined account Bob already exists (2026-05-14 15:15:35,096)
-INFO: Declined account Bob already exists (2026-05-14 15:15:35,096)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:15:35,097)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:15:35,110)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:15:35,110)
-INFO: Declined account Bob already exists (2026-05-14 15:15:38,845)
-INFO: Declined account Bob already exists (2026-05-14 15:15:38,845)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:15:38,845)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:15:38,857)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:15:38,858)
-INFO: Declined account Bob already exists (2026-05-14 15:21:25,696)
-INFO: Declined account Bob already exists (2026-05-14 15:21:25,697)
-INFO: Failed to fetch info of account Steve it was not found (2026-05-14 15:21:25,697)
-INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000 (2026-05-14 15:21:25,709)
-INFO: [33mPress CTRL+C to quit[0m (2026-05-14 15:21:25,709)
+ * Running on http://127.0.0.1:5000 (2026-05-28 15:59:29,076)
+INFO: [33mPress CTRL+C to quit[0m (2026-05-28 15:59:29,076)
+ERROR: Exception on /loginComms [POST] (2026-05-28 15:59:34,541)
+Traceback (most recent call last):
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/main.py", line 39, in loginComms
+    if loginAPI.findUsername(username=loginData["username"])["status"] == "failed":
+       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/features/login/api.py", line 26, in findUsername
+    result = dataBaseAPI.fetchAllAccountData(username=username)
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/dataBase/api.py", line 99, in fetchAllAccountData
+    cursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 137150597430144 and this is thread id 137150557333184.
+INFO: 127.0.0.1 - - [28/May/2026 15:59:34] "[35m[1mPOST /loginComms HTTP/1.1[0m" 500 - (2026-05-28 15:59:34,552)
+INFO: 127.0.0.1 - - [28/May/2026 15:59:35] "GET /login HTTP/1.1" 200 - (2026-05-28 15:59:35,830)
+INFO: 127.0.0.1 - - [28/May/2026 15:59:36] "[36mGET /static/login.js HTTP/1.1[0m" 304 - (2026-05-28 15:59:36,053)
+ERROR: Exception on /loginComms [POST] (2026-05-28 15:59:39,187)
+Traceback (most recent call last):
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/main.py", line 39, in loginComms
+    if loginAPI.findUsername(username=loginData["username"])["status"] == "failed":
+       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/features/login/api.py", line 26, in findUsername
+    result = dataBaseAPI.fetchAllAccountData(username=username)
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/dataBase/api.py", line 99, in fetchAllAccountData
+    cursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 137150597430144 and this is thread id 137150548940480.
+INFO: 127.0.0.1 - - [28/May/2026 15:59:39] "[35m[1mPOST /loginComms HTTP/1.1[0m" 500 - (2026-05-28 15:59:39,190)
+ERROR: Exception on /loginComms [POST] (2026-05-28 15:59:51,414)
+Traceback (most recent call last):
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/abbas/.pyenv/versions/3.13.2/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/main.py", line 39, in loginComms
+    if loginAPI.findUsername(username=loginData["username"])["status"] == "failed":
+       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/features/login/api.py", line 26, in findUsername
+    result = dataBaseAPI.fetchAllAccountData(username=username)
+  File "/home/abbas/Documents/Projects/Word Guess Game Web/dataBase/api.py", line 99, in fetchAllAccountData
+    cursor.execute(f"SELECT * FROM accounts WHERE username = '{username}'")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 137150597430144 and this is thread id 137150557333184.
+INFO: 127.0.0.1 - - [28/May/2026 15:59:51] "[35m[1mPOST /loginComms HTTP/1.1[0m" 500 - (2026-05-28 15:59:51,422)

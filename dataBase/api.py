@@ -102,7 +102,7 @@ def fetchAllAccountData(username):
 
     if not data:
         lg.logInfo(f"Failed to fetch info of account {username} it was not found")
-        return {"status": "failed"}
+        return {"status": "failed", "msg": "Account of that username was not found"}
 
     return {"status": "ok", "data": data}
 
