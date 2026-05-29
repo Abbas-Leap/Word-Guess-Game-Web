@@ -25,8 +25,6 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     let responseData = await response.json();
 
-    alert(responseData["msg"])
-
     if (responseData["status"] == "declined") {
         alert(responseData["msg"]);
         return;
@@ -40,5 +38,6 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     if (responseData["status"] == "ok") {
         alert(responseData["msg"])
+        window.location.href = `${window.location.origin}${responseData["subLink"]}`
     }
 });

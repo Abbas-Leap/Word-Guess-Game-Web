@@ -22,6 +22,10 @@ def index():
 
 @app.route("/login")
 def login():
+    # If there are cookies reset them
+    if "username" in request.cookies:
+        return redirect(url_for("index"))
+    #
     return render_template("login.html")
 
 
@@ -55,7 +59,20 @@ def loginComms():
     if isLoginDataCorrect["status"] == "mismatch":
         return jsonify({"status": "declined", "msg": isLoginDataCorrect["msg"]})
     # If everything matches all inputs valid username found password matches
-    finalResp = make_response(jsonify({"status": "ok", "msg": "Succesfully logged in"}))
+    finalResp = make_response(
+        jsonify(
+            {
+                "status": "ok",
+                "msg": "Succesfully logged in",
+                "subLink": url_for("homePage"),
+            }
+        )
+    )
     finalResp.set_cookie("username", loginData["username"])
 
     return finalResp
+
+
+@app.route("/home")
+def homePage():
+    return f"Home {request.cookies.get('username')}"

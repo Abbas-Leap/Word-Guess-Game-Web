@@ -2,7 +2,7 @@ User types username and password and submits / Done
 
 Client side (Javascript):
     Check if username is between 3 and 15 characters / Done
-    Check if password above 3 characters
+    Check if password above 3 characters / Done
 
     Send or Reject according to result / Done
 
