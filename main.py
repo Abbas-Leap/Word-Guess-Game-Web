@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from flask import Flask, jsonify, render_template
 from flask.globals import request
 from flask.helpers import make_response, url_for
@@ -9,6 +11,8 @@ from features.login import api as loginAPI
 from logs import api as lg
 
 app = Flask(__name__)
+
+htmlTemplates = Path(__file__).resolve().parent / "templates"
 
 
 @app.route("/")
@@ -64,7 +68,7 @@ def loginComms():
             {
                 "status": "ok",
                 "msg": "Succesfully logged in",
-                "subLink": url_for("homePage"),
+                "subLink": url_for("lobbyPage"),
             }
         )
     )
@@ -73,6 +77,18 @@ def loginComms():
     return finalResp
 
 
-@app.route("/home")
-def homePage():
-    return f"Home {request.cookies.get('username')}"
+@app.route("/lobby")
+def lobbyPage():
+    htmlCode = ""
+
+    with open(htmlTemplates / "lobby.html", "r") as f:
+        htmlCode = f.read()
+
+    accountInfo = dataBaseAPI.fetchAllAccountData(request.cookies.get("username"))
+
+    return (
+        htmlCode.replace("PLAYERUSERNAME", str(accountInfo["data"][0]))
+        .replace("PLAYERPOINTS", str(accountInfo["data"][2]))
+        .replace("NUMBEROFACTIVEPLAYERS", str(5))
+        .replace("NUMBEROFREADYPLAYERS", str(0))
+    )

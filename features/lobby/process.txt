@@ -1,0 +1,32 @@
+UI:
+    Have the player name (h1) and points (h4) on top
+    Have the number of active players
+    Have a ready button with the number of players ready and total number of players
+    A chat in the bottom
+
+Ready:
+    User clicks ready
+
+    Javascript sends the ready event to the server
+
+    If user already ready:
+        server removes player from ready
+
+        Javascript updates the UI (ready button becomes green and text ready)
+
+    If user not ready:
+        server adds player to ready
+
+        Javascript updates the UI (ready button becomes red and text unready)
+
+Track Players:
+    To track online players add a chat and with the chat generator track whether the player is still on the website or not
+
+Chat:
+    User types message and sends
+
+    Javascript filters out empty strings and resets the Text in chat box and sends to server
+
+    Message is processed by python and formatted to user: message
+
+    Message is broadcasted to every user
