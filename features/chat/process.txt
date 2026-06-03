@@ -1,0 +1,20 @@
+On start:
+    User requests a generator
+    Make a generator for user
+    Generator used to send messages and track the user if active or not
+
+Sending:
+    User types a message and hits enter
+    Javascript filters empty strings and sends to server
+
+    Server gets the message formats it to username: message format and stores it in a temporary list that resets every time the game loads
+
+Recieving:
+    On start:
+        User requests the temporary list of all messages and shows them
+
+    When a new message is sent it is send via an event and is shown normally
+
+    Showing:
+        Create a <p> tag using Javascript under chat box
+        Add message id message to it

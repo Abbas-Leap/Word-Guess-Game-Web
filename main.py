@@ -8,6 +8,7 @@ from werkzeug.utils import redirect
 from dataBase import api as dataBaseAPI
 from features.game import api as gameAPI
 from features.login import api as loginAPI
+from features.users import api as usersTrackAPI
 from logs import api as lg
 
 app = Flask(__name__)
@@ -85,6 +86,8 @@ def lobbyPage():
         htmlCode = f.read()
 
     accountInfo = dataBaseAPI.fetchAllAccountData(request.cookies.get("username"))
+
+    usersTrackAPI.addUserToActive(username=accountInfo["data"][0])
 
     return (
         htmlCode.replace("PLAYERUSERNAME", str(accountInfo["data"][0]))
