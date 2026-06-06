@@ -1,7 +1,6 @@
 On start:
     User requests a generator
     Make a generator for user
-    Generator used to send messages and track the user if active or not
 
 Sending:
     User types a message and hits enter

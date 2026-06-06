@@ -21,12 +21,3 @@ Ready:
 
 Track Players:
     To track online players add a chat and with the chat generator track whether the player is still on the website or not
-
-Chat:
-    User types message and sends
-
-    Javascript filters out empty strings and resets the Text in chat box and sends to server
-
-    Message is processed by python and formatted to user: message
-
-    Message is broadcasted to every user
