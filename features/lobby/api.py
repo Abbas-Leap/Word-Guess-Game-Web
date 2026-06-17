@@ -14,7 +14,7 @@ def userStatusGenerator(username):
     clients.append(q)
     try:
         while True:
-            sleep(0.1)
+            sleep(0.07)
             if len(q) > 0:
                 yield f"data: {json.dumps(q.pop(0))}\n\n"
             else:

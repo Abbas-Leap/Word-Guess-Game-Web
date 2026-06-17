@@ -1,7 +1,7 @@
 UI:
     Have the player name (h1) and points (h4) on top / Done
     Have the number of active players / Done
-    Have a ready button with the number of players ready and total number of players
+    Have a ready button with the number of players ready and total number of players / Done
     A chat in the bottom
 
 Ready:
@@ -22,10 +22,10 @@ Ready:
 Track Users:
     When a user logs in:
         Gets added to active players list / Done
-        Gets a generator that always updates(every 0.07s):
+        Gets a generator that always updates(every 0.07s): / Done
             Ready players
             Active players
 
     When generator exits then the user has disconnected from lobby:
         Went to game (Handled seperately)
-        Disconnected (The normal case)
+        Disconnected (The normal case) / Done
