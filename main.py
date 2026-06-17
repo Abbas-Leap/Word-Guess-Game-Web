@@ -1,12 +1,14 @@
 from pathlib import Path
+from time import sleep
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, Response, json, jsonify, render_template, stream_with_context
 from flask.globals import request
 from flask.helpers import make_response, url_for
 from werkzeug.utils import redirect
 
 from dataBase import api as dataBaseAPI
 from features.game import api as gameAPI
+from features.lobby import api as lobbyAPI
 from features.login import api as loginAPI
 from features.users import api as usersTrackAPI
 from logs import api as lg
@@ -14,6 +16,8 @@ from logs import api as lg
 app = Flask(__name__)
 
 htmlTemplates = Path(__file__).resolve().parent / "templates"
+
+gen = lobbyAPI.getUserStatusGenerator("jj")
 
 
 @app.route("/")
@@ -63,6 +67,9 @@ def loginComms():
 
     if isLoginDataCorrect["status"] == "mismatch":
         return jsonify({"status": "declined", "msg": isLoginDataCorrect["msg"]})
+    # If account already active
+    if loginData["username"] in usersTrackAPI.getActiveUsers()["data"]:
+        return jsonify({"status": "declined", "msg": "Account already active"})
     # If everything matches all inputs valid username found password matches
     finalResp = make_response(
         jsonify(
@@ -75,23 +82,53 @@ def loginComms():
     )
     finalResp.set_cookie("username", loginData["username"])
 
+    usersTrackAPI.addUserToActive(loginData["username"])
+
     return finalResp
 
 
 @app.route("/lobby")
 def lobbyPage():
-    htmlCode = ""
-
-    with open(htmlTemplates / "lobby.html", "r") as f:
-        htmlCode = f.read()
-
+    if "username" not in request.cookies.keys():
+        return redirect(url_for("index"))
+    #
+    if request.cookies.get("username") not in usersTrackAPI.getActiveUsers()["data"]:
+        return redirect(url_for("index"))
+    #
     accountInfo = dataBaseAPI.fetchAllAccountData(request.cookies.get("username"))
 
-    usersTrackAPI.addUserToActive(username=accountInfo["data"][0])
+    return render_template("lobby.html")
 
-    return (
-        htmlCode.replace("PLAYERUSERNAME", str(accountInfo["data"][0]))
-        .replace("PLAYERPOINTS", str(accountInfo["data"][2]))
-        .replace("NUMBEROFACTIVEPLAYERS", str(5))
-        .replace("NUMBEROFREADYPLAYERS", str(0))
+
+@app.route("/lobbyOneTimeComm", methods=["POST", "GET"])
+def lobbyOneTimeComm():
+    # User Info
+    username = request.cookies.get("username")
+    accountInfo = dataBaseAPI.fetchAllAccountData(username=username)
+
+    points = accountInfo["data"][2]
+    # Players Info
+    numOfActiveUsers = len(usersTrackAPI.getActiveUsers()["data"])
+    numOfReadyUsers = len(usersTrackAPI.getReadyUsers()["data"])
+    # Send
+    return jsonify(
+        {
+            "status": "ok",
+            "data": {
+                "username": username,
+                "points": points,
+                "numOfActiveUsers": numOfActiveUsers,
+                "numOfReadyUsers": numOfReadyUsers,
+            },
+        }
+    )
+
+
+@app.route("/lobbyUsersStatusComm", methods=["GET", "POST"])
+def lobbyUsersStatusComm():
+    return Response(
+        stream_with_context(
+            lobbyAPI.getUserStatusGenerator(request.cookies.get("username"))
+        ),
+        mimetype="text/event-stream",
     )

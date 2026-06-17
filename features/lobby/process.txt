@@ -1,6 +1,6 @@
 UI:
-    Have the player name (h1) and points (h4) on top
-    Have the number of active players
+    Have the player name (h1) and points (h4) on top / Done
+    Have the number of active players / Done
     Have a ready button with the number of players ready and total number of players
     A chat in the bottom
 
@@ -19,5 +19,13 @@ Ready:
 
         Javascript updates the UI (ready button becomes red and text unready)
 
-Track Players:
-    To track online players add a chat and with the chat generator track whether the player is still on the website or not
+Track Users:
+    When a user logs in:
+        Gets added to active players list / Done
+        Gets a generator that always updates(every 0.07s):
+            Ready players
+            Active players
+
+    When generator exits then the user has disconnected from lobby:
+        Went to game (Handled seperately)
+        Disconnected (The normal case)
