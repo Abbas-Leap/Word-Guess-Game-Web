@@ -1,8 +1,6 @@
 import json
 from time import sleep
 
-from flask.json import jsonify
-
 from features.users import api as usersTrackAPI
 
 clients = []
@@ -35,7 +33,7 @@ def updateUsersStatus():
     for q in clients:
         q.append(
             {
-                "activeUsers": len(usersTrackAPI.getActiveUsers()["data"]),
-                "readyUsers": len(usersTrackAPI.getReadyUsers()["data"]),
+                "activeUsers": len(usersTrackAPI.getActiveUsers()),
+                "readyUsers": len(usersTrackAPI.getReadyUsers()),
             }
         )

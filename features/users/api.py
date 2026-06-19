@@ -27,8 +27,8 @@ def removeUserFromReady(username):
     return {"status": "ok"}
 
 
-def getReadyUsers() -> dict:
-    return {"status": "ok", "data": readyUsers}
+def getReadyUsers() -> list:
+    return readyUsers
 
 
 # Active / Online
@@ -55,5 +55,5 @@ def removeUserFromActive(username):
     return {"status": "ok"}
 
 
-def getActiveUsers() -> dict:
-    return {"status": "ok", "data": activeUsers}
+def getActiveUsers() -> list:
+    return activeUsers

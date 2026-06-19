@@ -39,5 +39,26 @@ new EventSource(`${window.location.origin}/lobbyUsersStatusComm`).onmessage = (e
 };
 // ------------------
 // Ready
+async function toggleReady() {
+    let readyButton = document.getElementById("ready");
+
+    let response = await fetch("/lobbyReadyComm", { "method": "POST" });
+
+    let responseJson = await response.json();
+
+    if (responseJson["status"] != "ok")
+        return;
+
+    // Unready
+    if (responseJson["newState"] == "Unready") {
+        readyButton.textContent = "Ready";
+        readyButton.style.backgroundColor = "green";
+    }
+    // Ready
+    else {
+        readyButton.textContent = "Unready";
+        readyButton.style.backgroundColor = "red";
+    }
+}
 // ------------------
 // Chat

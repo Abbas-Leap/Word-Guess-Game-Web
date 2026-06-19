@@ -5,22 +5,22 @@ UI:
     A chat in the bottom
 
 Ready:
-    User clicks ready
+    User clicks ready / Done
 
-    Javascript sends the ready event to the server
+    Javascript sends the ready event to the server / Done
 
-    If user already ready:
+    If user already ready:  / Done
         server removes player from ready
 
         Javascript updates the UI (ready button becomes green and text ready)
 
-    If user not ready:
+    If user not ready: / Done
         server adds player to ready
 
         Javascript updates the UI (ready button becomes red and text unready)
 
 Track Users:
-    When a user logs in:
+    When a user logs in: / Done
         Gets added to active players list / Done
         Gets a generator that always updates(every 0.07s): / Done
             Ready players

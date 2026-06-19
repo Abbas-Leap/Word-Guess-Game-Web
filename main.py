@@ -68,7 +68,7 @@ def loginComms():
     if isLoginDataCorrect["status"] == "mismatch":
         return jsonify({"status": "declined", "msg": isLoginDataCorrect["msg"]})
     # If account already active
-    if loginData["username"] in usersTrackAPI.getActiveUsers()["data"]:
+    if loginData["username"] in usersTrackAPI.getActiveUsers():
         return jsonify({"status": "declined", "msg": "Account already active"})
     # If everything matches all inputs valid username found password matches
     finalResp = make_response(
@@ -90,12 +90,15 @@ def loginComms():
 @app.route("/lobby")
 def lobbyPage():
     if "username" not in request.cookies.keys():
+        lg.logInfo("Username not found")
         return redirect(url_for("index"))
     #
-    if request.cookies.get("username") not in usersTrackAPI.getActiveUsers()["data"]:
+    if request.cookies.get("username") not in usersTrackAPI.getActiveUsers():
+        lg.logInfo(
+            f"Possible back door from {request.cookies.get('username')} got kicked"
+        )
         return redirect(url_for("index"))
     #
-    accountInfo = dataBaseAPI.fetchAllAccountData(request.cookies.get("username"))
 
     return render_template("lobby.html")
 
@@ -108,8 +111,8 @@ def lobbyOneTimeComm():
 
     points = accountInfo["data"][2]
     # Players Info
-    numOfActiveUsers = len(usersTrackAPI.getActiveUsers()["data"])
-    numOfReadyUsers = len(usersTrackAPI.getReadyUsers()["data"])
+    numOfActiveUsers = len(usersTrackAPI.getActiveUsers())
+    numOfReadyUsers = len(usersTrackAPI.getReadyUsers())
     # Send
     return jsonify(
         {
@@ -132,3 +135,26 @@ def lobbyUsersStatusComm():
         ),
         mimetype="text/event-stream",
     )
+
+
+@app.route("/lobbyReadyComm", methods=["POST", "GET"])
+def lobbyReadyComm():
+
+    newState = ""
+
+    print("ReadyToggle")
+    # Security
+    if request.cookies.get("username") not in usersTrackAPI.getActiveUsers():
+        return jsonify({"status": "declined"})
+
+    # Un ready
+    if request.cookies.get("username") in usersTrackAPI.getReadyUsers():
+        usersTrackAPI.removeUserFromReady(request.cookies.get("username"))
+        lg.logInfo(f"{request.cookies.get('username')} Unready")
+        newState = "Unready"
+    else:  # Ready
+        usersTrackAPI.addUserToReady(request.cookies.get("username"))
+        lg.logInfo(f"{request.cookies.get('username')} Ready")
+        newState = "Ready"
+
+    return jsonify({"status": "ok", "newState": newState})
