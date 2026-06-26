@@ -1,10 +1,10 @@
 On start:
-    User requests a generator
-    Make a generator for user
+    User requests a generator / Done
+    Make a generator for user / Done
 
 Sending:
-    User types a message and hits enter
-    Javascript filters empty strings and sends to server
+    User types a message and hits enter / Done
+    Javascript filters empty strings and sends to server / Done
 
     Server gets the message formats it to username: message format and stores it in a temporary list that resets every time the game loads
 

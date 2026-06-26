@@ -4,8 +4,8 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     let usernameNode = document.getElementById("usernameInput");
     let passwordNode = document.getElementById("passwordInput");
 
-    let username = usernameNode.value;
-    let password = passwordNode.value;
+    let username = usernameNode.value.trim();
+    let password = passwordNode.value.trim();
 
     if (username.length > 15 || username.length < 3) {
         alert("Username must be between 15 and 3 characters long!")

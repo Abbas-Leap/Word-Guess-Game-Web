@@ -7,6 +7,7 @@ from flask.helpers import make_response, url_for
 from werkzeug.utils import redirect
 
 from dataBase import api as dataBaseAPI
+from features.chat import api as chatAPI
 from features.game import api as gameAPI
 from features.lobby import api as lobbyAPI
 from features.login import api as loginAPI
@@ -122,6 +123,7 @@ def lobbyOneTimeComm():
                 "points": points,
                 "numOfActiveUsers": numOfActiveUsers,
                 "numOfReadyUsers": numOfReadyUsers,
+                "chatHistory": chatAPI.getChatHistory(),
             },
         }
     )
@@ -158,3 +160,23 @@ def lobbyReadyComm():
         newState = "Ready"
 
     return jsonify({"status": "ok", "newState": newState})
+
+
+@app.route("/chatRecieveComm", methods=["POST", "GET"])
+def chatRecieveComm():
+    return ""
+
+
+@app.route("/chatSendComm", methods=["POST", "GET"])
+def chatComm():
+    message = request.get_json()["message"]
+    # Format
+    finalMessage = f"{request.cookies.get('username')}: {message}"
+    # Send
+    chatAPI.sendMessage(finalMessage)
+    #
+    return ""
+
+
+if __name__ == "__main__":
+    app.run()
