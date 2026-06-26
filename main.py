@@ -162,11 +162,6 @@ def lobbyReadyComm():
     return jsonify({"status": "ok", "newState": newState})
 
 
-@app.route("/chatRecieveComm", methods=["POST", "GET"])
-def chatRecieveComm():
-    return ""
-
-
 @app.route("/chatSendComm", methods=["POST", "GET"])
 def chatComm():
     message = request.get_json()["message"]

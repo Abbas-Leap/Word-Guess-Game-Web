@@ -27,7 +27,7 @@ def getUserStatusGenerator(username):
     return userStatusGenerator(username=username)
 
 
-def updateUsersStatus():
+def updateUsersStatus(message="Null"):
     print("Updating")
 
     for q in clients:
@@ -35,5 +35,6 @@ def updateUsersStatus():
             {
                 "activeUsers": len(usersTrackAPI.getActiveUsers()),
                 "readyUsers": len(usersTrackAPI.getReadyUsers()),
+                "message": message,
             }
         )

@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     numOfActiveUsers2.textContent = data["data"]["numOfActiveUsers"];
     numOfReadyUsers.textContent = data["data"]["numOfReadyUsers"];
     // Chat related
+    alert(data["data"]["chatHistory"]);
+    for (let i = 0; i < data["data"]["chatHistory"].length; i++) {
+        renderMessage(data["data"]["chatHistory"][i]);
+    }
 });
 // Info Track
 new EventSource(`${window.location.origin}/lobbyUsersStatusComm`).onmessage = (event) => {
@@ -36,6 +40,11 @@ new EventSource(`${window.location.origin}/lobbyUsersStatusComm`).onmessage = (e
     numOfActiveUsers2.textContent = eventData.activeUsers;
 
     numOfReadyUsers.textContent = eventData.readyUsers;
+    // Chat
+    if (eventData.message == "Null")
+        return;
+
+    renderMessage(eventData.message);
 };
 // ------------------
 // Ready
@@ -62,3 +71,37 @@ async function toggleReady() {
 }
 // ------------------
 // Chat
+async function sendMessage() {
+    let chatBoxNode = document.getElementById("chatBox");
+    let message = chatBoxNode.value.trim();
+
+    chatBoxNode.value = "";
+
+    if (!isMessageValid(message)) {
+        alert("Invalid or empty text");
+        return;
+    }
+
+    await fetch("/chatSendComm", {
+        "headers": { "Content-Type": "application/json" },
+        "method": "POST",
+        "body": JSON.stringify({ "message": message }),
+    });
+};
+// Utilities
+function isMessageValid(message) {
+    if (message.length > 0) {
+        return true;
+    }
+    return false;
+};
+
+function renderMessage(message) {
+    let chatArea = document.getElementById("Chat");
+
+    let messageNode = document.createElement("p");
+    messageNode.id = "message";
+    messageNode.textContent = message;
+
+    chatArea.prepend(messageNode);
+};

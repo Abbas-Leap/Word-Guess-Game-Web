@@ -1,3 +1,5 @@
+Done
+
 On start:
     User requests a generator / Done
     Make a generator for user / Done
@@ -6,14 +8,14 @@ Sending:
     User types a message and hits enter / Done
     Javascript filters empty strings and sends to server / Done
 
-    Server gets the message formats it to username: message format and stores it in a temporary list that resets every time the game loads
+    Server gets the message formats it to username: message format and stores it in a temporary list that resets every time the game loads / Done
 
 Recieving:
     On start:
-        User requests the temporary list of all messages and shows them
+        User requests the temporary list of all messages and shows them / Done
 
-    When a new message is sent it is send via an event and is shown normally
+    When a new message is sent it is send via an event and is shown normally / Done
 
-    Showing:
+    Showing: / Done
         Create a <p> tag using Javascript under chat box
         Add message id message to it
