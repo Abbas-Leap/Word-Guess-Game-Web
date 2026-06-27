@@ -1,0 +1,51 @@
+When all active users ready:
+    GameStarts:
+        Makes state as game started
+        Sends a message to all clients throught message "Game Started" (impossible to send as a client due to formatting)
+
+        Javascript redirects users to "/game"
+        ActiveUsers gets cleared but Then refilled from the players list
+
+        Security:
+            if user not found in players list gets logged out
+
+        when game is already on going players in lobby can chat and click ready but not start (A text shows game on going)
+
+    A word setter is chosen and a wordset div is loaded
+
+    Word setter cannot try to guess a word
+
+    Word guessers can all guess (each gets a turn)
+
+    Word guessers donot get Word setter div
+
+    if word setter loggs off game ends
+
+    Word setter chooses a word less than 10 letters and game starts
+
+Game Loop:
+    through the same stream as chat the guessers know when it is their turn by an info <p> tag
+
+    there is a limited number of guesses shown in info <p> tag
+
+    for the guesser to know their turn a currentGuesser is sent in the stream
+
+    if the currentGuesser loggs off his turn is skipped and handed to the next guesser
+    if word setter loggs game continues normally
+
+    word setter can chat normally
+
+
+    to know that only the current word guesser is guessing a check is done first
+
+    the guess feedback is sent in the stream
+
+    Game ends if guesses are all used or if guessed correctly
+
+Game End:
+    A game end alert is sent to all players
+    Players redirected to lobby
+
+    The text showing game on going is replaced with Empty
+
+    Reset all the variables in base.py through reset() function

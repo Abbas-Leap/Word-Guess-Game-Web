@@ -158,7 +158,10 @@ def lobbyReadyComm():
         usersTrackAPI.addUserToReady(request.cookies.get("username"))
         lg.logInfo(f"{request.cookies.get('username')} Ready")
         newState = "Ready"
-
+    # Game start
+    if len(usersTrackAPI.getReadyUsers()) == len(usersTrackAPI.getActiveUsers()):
+        gameAPI.startGame()
+    #
     return jsonify({"status": "ok", "newState": newState})
 
 

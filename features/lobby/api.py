@@ -2,6 +2,7 @@ import json
 from time import sleep
 
 from features.users import api as usersTrackAPI
+from logs import api as logger
 
 clients = []
 
@@ -18,7 +19,7 @@ def userStatusGenerator(username):
             else:
                 yield ": heartbeat \n\n"
     except GeneratorExit:
-        print(f"{username} logged off")
+        logger.logInfo(f"{username} logged off")
         clients.remove(q)
         usersTrackAPI.removeUserFromActive(username=username)
 
@@ -28,7 +29,6 @@ def getUserStatusGenerator(username):
 
 
 def updateUsersStatus(message="Null"):
-    print("Updating")
 
     for q in clients:
         q.append(
