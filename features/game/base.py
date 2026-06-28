@@ -1,8 +1,8 @@
 import random
 
 from dataBase import api as dataBaseAPI
+from features.users import api as usersTrackAPI
 
-players = []
 guessers = []
 
 guesserReward = 5
@@ -17,35 +17,7 @@ runtTimeData = {
 wordInfo = {"word": "", "size": 0}
 
 
-def addPlayerusername(username):
-    if username in players:
-        return {"status": "declined", "msg": "user already used"}
-
-    players.append(username)
-
-    return {"status": "ok"}
-
-
-def removePlayerusername(username):
-    if username not in players:
-        return {"status": "declined", "msg": "not found"}
-
-    players.remove(username)
-
-    return {"status": "ok"}
-
-
-def resetPlayers():
-    players.clear()
-
-
-def getPlayers():
-    return players
-
-
 def resetGameState():
-    resetPlayers()
-
     wordInfo["word"] = ""
     wordInfo["size"] = 0
 
@@ -53,7 +25,6 @@ def resetGameState():
     runtTimeData["wordSetterUsername"] = ""
     runtTimeData["currentGuesserIndex"] = -1
 
-    players.clear()
     guessers.clear()
 
 
@@ -62,7 +33,7 @@ def getRemainingGuesses():
 
 
 def selectAWordSetter():
-    players = getPlayers()
+    players = usersTrackAPI.getPlayers()
 
     setter = players[random.randint(0, len(players) - 1)]
 

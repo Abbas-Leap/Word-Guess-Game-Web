@@ -6,6 +6,7 @@ from flask.globals import request
 from flask.helpers import make_response, url_for
 from werkzeug.utils import redirect
 
+import CONSTANTS
 from dataBase import api as dataBaseAPI
 from features.chat import api as chatAPI
 from features.game import api as gameAPI
@@ -17,8 +18,6 @@ from logs import api as lg
 app = Flask(__name__)
 
 htmlTemplates = Path(__file__).resolve().parent / "templates"
-
-gen = lobbyAPI.getUserStatusGenerator("jj")
 
 
 @app.route("/")
@@ -159,7 +158,10 @@ def lobbyReadyComm():
         lg.logInfo(f"{request.cookies.get('username')} Ready")
         newState = "Ready"
     # Game start
-    if len(usersTrackAPI.getReadyUsers()) == len(usersTrackAPI.getActiveUsers()):
+    if (
+        len(usersTrackAPI.getReadyUsers()) == len(usersTrackAPI.getActiveUsers())
+        and len(usersTrackAPI.getActiveUsers()) >= CONSTANTS.minNumOfPlayers
+    ):
         gameAPI.startGame()
     #
     return jsonify({"status": "ok", "newState": newState})
@@ -174,6 +176,11 @@ def chatComm():
     chatAPI.sendMessage(finalMessage)
     #
     return ""
+
+
+@app.route("/game")
+def game():
+    return "Game"
 
 
 if __name__ == "__main__":

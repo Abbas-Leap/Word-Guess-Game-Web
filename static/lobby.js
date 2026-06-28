@@ -43,7 +43,11 @@ new EventSource(`${window.location.origin}/lobbyUsersStatusComm`).onmessage = (e
     // Chat
     if (eventData.message == "Null")
         return;
-
+    else if (eventData.message == "Game Started") {
+        alert("Game Started");
+        window.location.href = `${window.location.origin}/game`;
+        return;
+    }
     renderMessage(eventData.message);
 };
 // ------------------
@@ -71,7 +75,9 @@ async function toggleReady() {
 }
 // ------------------
 // Chat
-async function sendMessage() {
+async function sendMessage(event) {
+    event.preventDefault();
+
     let chatBoxNode = document.getElementById("chatBox");
     let message = chatBoxNode.value.trim();
 

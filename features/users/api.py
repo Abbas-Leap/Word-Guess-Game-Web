@@ -2,29 +2,30 @@ from features.lobby import api as lobbyAPI
 
 activeUsers = []
 readyUsers = []
+players = []
 
 
 # Ready
 def addUserToReady(username):
     if username in readyUsers:
-        return {"status": "declined"}
+        return "declined"
 
     readyUsers.append(username)
 
     lobbyAPI.updateUsersStatus()
 
-    return {"status": "ok"}
+    return "ok"
 
 
 def removeUserFromReady(username):
     if username not in activeUsers:
-        return {"status": "declined"}
+        return "declined"
 
     readyUsers.remove(username)
 
     lobbyAPI.updateUsersStatus()
 
-    return {"status": "ok"}
+    return "ok"
 
 
 def getReadyUsers() -> list:
@@ -34,13 +35,13 @@ def getReadyUsers() -> list:
 # Active / Online
 def addUserToActive(username):
     if username in activeUsers:
-        return {"status": "declined"}
+        return "declined"
 
     activeUsers.append(username)
 
     lobbyAPI.updateUsersStatus()
 
-    return {"status": "ok"}
+    return "ok"
 
 
 def removeUserFromActive(username):
@@ -52,8 +53,26 @@ def removeUserFromActive(username):
 
     lobbyAPI.updateUsersStatus()
 
-    return {"status": "ok"}
+    return "ok"
 
 
 def getActiveUsers() -> list:
     return activeUsers
+
+
+# Players
+def setupPlayers():
+    players = activeUsers.copy()
+
+
+def removePlayer(username):
+    if username not in players:
+        return "declined"
+
+    players.remove(username)
+
+    return "ok"
+
+
+def getPlayers() -> list:
+    return players

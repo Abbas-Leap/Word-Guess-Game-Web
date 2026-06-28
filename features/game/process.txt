@@ -1,10 +1,10 @@
 When all active users ready:
     GameStarts:
-        Makes state as game started
-        Sends a message to all clients throught message "Game Started" (impossible to send as a client due to formatting)
+        Makes state as game started / Done
+        Sends a message to all clients through message "Game Started" (impossible to send as a client due to formatting) / Done
 
-        Javascript redirects users to "/game"
-        ActiveUsers gets cleared but Then refilled from the players list
+        Javascript redirects users to "/game" / Done
+        Players is used instead of activeUsers
 
         Security:
             if user not found in players list gets logged out

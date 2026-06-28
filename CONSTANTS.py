@@ -1,0 +1,1 @@
+minNumOfPlayers = 1
